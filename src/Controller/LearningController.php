@@ -8,16 +8,25 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
+use App\Service\Master;
+use App\Service\Logger;
+use App\Service\ToUpper;
+use App\Service\ToDash;
+use App\Service\MessageGenerator;
 
 class LearningController extends AbstractController
 {
-    // #[Route('/', name: 'learning')]
-    // public function index(): Response
-    // {
-    //     return $this->render('learning/index.html.twig', [
-    //         'controller_name' => 'LearningController',
-    //     ]);
-    // }
+    #[Route('/di', name: 'di')]
+    public function index(Logger $logger): Response
+    {
+        $trans = new ToUpper(); 
+        $master = new Master($trans);
+        $message = $master->transform('Hello world here');
+        return $this->render('learning/di.html.twig', [
+            'result' => $message
+        ]);
+    }
 
     /**
     * @Route("/about-becode", name="aboutMe")
