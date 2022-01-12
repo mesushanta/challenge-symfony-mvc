@@ -15,6 +15,32 @@
         {% endblock %}
     </head>
     <body class="bg-blue-50">
+    <aside class="float-left h-screen fixed bg-gray-700 text-gray-100" style="width: 300px;">
+        <ul class="mt-20">
+            <li class="block mx-4 py-4">
+                <a href="{{ path('showMyName') }}"
+                   class="text-gray-100 hover:text-gray-300"
+                >Home</a>
+            </li>
+            <li class="block mx-4 py-4">
+                <a href="{{ path('aboutMe') }}"
+                   class="text-gray-100 hover:text-gray-300"
+                >About me</a>
+            </li>
+            <li class="block mx-4 py-4">
+                <a href="{{ path('transform') }}"
+                   class="text-gray-100 hover:text-gray-300"
+                >Transform</a>
+            </li>
+        </ul>
+    </aside>
+
+    <section class="float-right px-4" style="width: calc(100vw - 320px)">
         {% block body %}{% endblock %}
+
+        {{ quote() }}
+
+    </section>
+
     </body>
 </html>

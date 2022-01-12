@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use \DateTime;
 
 class LearningController extends AbstractController
 {
@@ -26,7 +27,8 @@ class LearningController extends AbstractController
             return $response;
         }
         return $this->render('learning/about.html.twig',[
-            'name' => $name
+            'name' => $name,
+            'date' => new DateTime()
         ]);
     }
 

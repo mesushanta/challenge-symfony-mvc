@@ -5,8 +5,12 @@
 {% block body %}
 
     <div class="max-w-screen-xl mx-auto my-20 p-8 bg-white border border-gray-300 shadow-xl">
-        <h1>Here I am, this is me {{ name }}</h1>
-        <a href="{{ path('showMyName') }}">My name Page</a>
+        <h1>{{ 'Here I am, this is me' | upper  }} <b>{{ name | capitalize }}</b></h1>
+        <ul class="mt-10 text-gray-700 text-lg font-light">
+            <li><b>Belgium : </b> {{ date | date("F d, Y G:i:s (l)", "Europe/Brussels") }}</li>
+            <li><b>Nepal : </b> {{ date | date("F d, Y G:i:s (l)", "Europe/Brussels") }}</li>
+            <li><b>New York :</b> {{ date | date("F d, Y G:i:s (l)", "Europe/Brussels") }}</li>
+        </ul>
 
         <ul class="mt-20">
             <li class="inline-block mx-4 py-4">
@@ -25,5 +29,6 @@
                 >Transform</a>
             </li>
         </ul>
+
     </div>
 {% endblock %}
