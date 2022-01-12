@@ -3,14 +3,27 @@
 {% block title %}Hello LearningController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Here I am, this is me {{ name }}</h1>
-    <a href="{{ path('showMyName') }}">My name Page</a>
-    
-</div>
+    <div class="max-w-screen-xl mx-auto my-20 p-8 bg-white border border-gray-300 shadow-xl">
+        <h1>Here I am, this is me {{ name }}</h1>
+        <a href="{{ path('showMyName') }}">My name Page</a>
+
+        <ul class="mt-20">
+            <li class="inline-block mx-4 py-4">
+                <a href="{{ path('showMyName') }}"
+                   class="text-gray-500 hover:text-gray-800"
+                >Home</a>
+            </li>
+            <li class="inline-block mx-4 py-4">
+                <a href="{{ path('aboutMe') }}"
+                   class="text-blue-500 hover:text-blue-500"
+                >About me</a>
+            </li>
+            <li class="inline-block mx-4 py-4">
+                <a href="{{ path('transform') }}"
+                   class="text-gray-500 hover:text-gray-800"
+                >Transform</a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}

@@ -15,9 +15,12 @@ class Master
         $this->transform = $transform;
     }
 
-    public function transform(string $input) : string  {
-       $this->logger->log($input);
-       $this->transform->transform($input);
+    public function transform(string $input) {
+       return $this->transform->transform($input);
+    }
+
+    public function log($input) {
+        return $this->logger->log($input);
     }
 
     

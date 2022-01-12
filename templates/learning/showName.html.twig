@@ -7,12 +7,39 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-<div class="example-wrapper">
-    <h3>Hello {{name}}</h3>
-    <form action="{{ path('changeMyName') }}" method="post">
-        <input type="text" name="name">
-        <input type="submit" name="submit" value="submit">
-    </form>
-    <a href="{{ path('aboutMe') }}">About me</a>
-</div>
+
+    <div class="max-w-screen-xl mx-auto my-20 p-8 bg-white border border-gray-300 shadow-xl">
+        <h3 class="text-xl text-green-700 mt-6">Hello {{name}}</h3>
+
+        <form action="{{ path('changeMyName') }}" method="post">
+            <input
+                    type="text"
+                    name="name"
+                    placeholder="Name please"
+                    class="mt-8 mx-2 h-10 border border-gray-400 focus:outline-none focus:border-blue-400 px-4 w-96"
+            >
+            <input type="submit" name="submit" value="Submit" class="mt-8 mx-2 h-10 border border-blue-600 bg-blue-500 hover:bg-blue-600 text-white focus:outline-none focus:border-blue-400 px-4 w-32">
+
+
+        </form>
+
+        <ul class="mt-20">
+            <li class="inline-block mx-4 py-4">
+                <a href="{{ path('showMyName') }}"
+                   class="text-blue-500 hover:text-blue-500"
+                >Home</a>
+            </li>
+            <li class="inline-block mx-4 py-4">
+                <a href="{{ path('aboutMe') }}"
+                   class="text-gray-500 hover:text-gray-800"
+                >About me</a>
+            </li>
+            <li class="inline-block mx-4 py-4">
+                <a href="{{ path('transform') }}"
+                   class="text-gray-500 hover:text-gray-800"
+                >Transform</a>
+            </li>
+        </ul>
+
+    </div>
 {% endblock %}

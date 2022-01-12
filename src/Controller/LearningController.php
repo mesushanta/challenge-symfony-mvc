@@ -8,26 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\HttpFoundation\Session\Session;
-use App\Service\Master;
-use App\Service\Logger;
-use App\Service\ToUpper;
-use App\Service\ToDash;
-use App\Service\MessageGenerator;
 
 class LearningController extends AbstractController
 {
-    #[Route('/di', name: 'di')]
-    public function index(Logger $logger): Response
-    {
-        $trans = new ToUpper(); 
-        $master = new Master($trans);
-        $message = $master->transform('Hello world here');
-        return $this->render('learning/di.html.twig', [
-            'result' => $message
-        ]);
-    }
-
     /**
     * @Route("/about-becode", name="aboutMe")
     * @param SessionInterface $session
@@ -50,9 +33,10 @@ class LearningController extends AbstractController
    /**
      * @Route("/", name="showMyName")
      * @param SessionInterface $session
+     * @param Request $request
      * @return Response
      */
-    public function showMyName(SessionInterface $session): Response
+    public function showMyName(SessionInterface $session, Request $request): Response
     {
         if($session->get('name')) {
             $name = $session->get('name');
@@ -60,6 +44,7 @@ class LearningController extends AbstractController
         else {
             $name = 'Stranger';
         }
+
         return $this->render('learning/showName.html.twig', [
             'name' => $name
         ]);
